@@ -61,7 +61,7 @@ def render(data: dict):
 
     c5, c6, d2, d3 = st.columns([1.7, 1.6, 1.15, 1.35])
     c5.metric("🌡️ Avg Amb. Temp",   f"{row['avg_temp']:.1f} °C")
-    c6.metric("☀️ Avg Irradiance",  f"{row['avg_irradiance']:.3f} W/m²")
+    c6.metric("☀️ Avg Irradiance",  f"{row['avg_irradiance']:.3f} kW/m²")
     # Second row: real derived metrics
     # if "performance_ratio" in row and pd.notna(row.get("performance_ratio")):
     #     d1.metric("📐 Performance Ratio",

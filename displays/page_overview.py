@@ -53,20 +53,20 @@ def render(data: dict):
 
     # ── KPI Cards ─────────────────────────────────────────────────────────────
     st.subheader("Key Performance Indicators")
-    c1, c2, c3, c4, c5 = st.columns([1.7, 1.6, 1.15, 1.35, 1])
+    c1, c2, c3, c4 = st.columns([1.7, 1.6, 1.15, 1.35])
     c1.metric("⚡ Peak AC Power",   f"{row['peak_power_kw']:.1f} kW")
     c2.metric("🔋 Daily AC Energy", f"{row['energy_kwh']:.0f} kWh")
     c3.metric("📊 Capacity Factor", f"{row['capacity_factor_pct']:.1f}%", help="AC energy / (nameplate × 24 h) × 100")
     c4.metric("🌿 CO₂ Saved",       f"{row['co2_saved_kg']:.0f} kg")
-    c5.metric("🌡️ Avg Amb. Temp",   f"{row['avg_temp']:.1f} °C")
 
-    c6, d1, d2, d3, _ = st.columns([1.7, 1.6, 1.15, 1.35, 1])
+    c5, c6, d2, d3 = st.columns([1.7, 1.6, 1.15, 1.35])
+    c5.metric("🌡️ Avg Amb. Temp",   f"{row['avg_temp']:.1f} °C")
     c6.metric("☀️ Avg Irradiance",  f"{row['avg_irradiance']:.3f} W/m²")
     # Second row: real derived metrics
-    if "performance_ratio" in row and pd.notna(row.get("performance_ratio")):
-        d1.metric("📐 Performance Ratio",
-                  f"{row['performance_ratio']:.3f}",
-                  help="Standard IEC metric: AC energy / (irradiance × capacity)")
+    # if "performance_ratio" in row and pd.notna(row.get("performance_ratio")):
+    #     d1.metric("📐 Performance Ratio",
+    #               f"{row['performance_ratio']:.3f}",
+    #               help="Standard IEC metric: AC energy / (irradiance × capacity)")
     if "avg_module_temp" in row and pd.notna(row.get("avg_module_temp")):
         d2.metric("🌡️ Avg Module Temp",
                   f"{row['avg_module_temp']:.1f} °C",
